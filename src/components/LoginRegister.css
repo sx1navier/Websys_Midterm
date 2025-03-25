@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Remove the duplicate video-background styles and add background image */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.auth-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;  /* Changed from center to flex-start */
+  align-items: center;
+  padding: 20px;
+  padding-left: 10%;  /* Added left padding to prevent sticking to the edge */
+}
+
+.auth-card {
+  width: 430px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  padding: 0 30px 40px;
+  padding-top: 70px;
+  transition: height 0.5s ease;
+  height: auto;
+  min-height: 520px;
+}
+
+.header-tab {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #8a384e;
+  color: white;
+  padding: 15px 50px;
+  border-radius: 0 0 20px 20px;
+  font-size: 22px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: #ffebee;
+  color: #e53935;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Form animation styles */
+.auth-form {
+  position: absolute;
+  width: calc(100% - 60px); /* Account for the padding of auth-card */
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 30px 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Login form animation position */
+.auth-form.login-form {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.auth-form.login-form.slide-out {
+  transform: translateX(-120%);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Register form animation position */
+.auth-form.register-form {
+  transform: translateX(120%);
+  opacity: 0;
+  z-index: 1;
+  min-height: 600px; /* Added minimum height for register form */
+}
+
+.auth-form.register-form.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+  min-height: 600px; /* Added minimum height for register form */
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 20px 15px 45px; /* Changed padding to accommodate left icon */
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #f0f5ff;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px; /* Changed from right to left */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+/* Add styles for password toggle icon */
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 40%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.password-toggle:active,
+.password-toggle:focus {
+  outline: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove the duplicate input-group definition and keep only one */
+.input-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle:hover {
+  color: #8a384e;
+}
+
+.input-group input:focus {
+  border-color: #8a384e;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+  color: #0D1936;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  accent-color: #0D1936;
+  width: 16px;
+  height: 16px;
+}
+
+.auth-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #8a384e;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.auth-button:hover {
+  background-color: #1a2b57;
+  gap: 15px;
+}
+
+.auth-button svg {
+  font-size: 18px;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.register-link, .login-link {
+  color: #0D1936;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.register-link:hover, .login-link:hover {
+  text-decoration: underline;
+}
+
+/* Added specific spacing to match the screenshot */
+.auth-form .input-group + .input-group {
+  margin-top: 10px;
+}
+
+/* Center the form on the page properly */
+#root, .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Remove this class if it exists */
+/* Remove empty ruleset */
+    /* ... */
+
+.password-strength {
+  margin-top: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-criteria {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.criteria-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 2px 0;
+}
+
+.criteria-item.valid {
+  color: #00c851;
+}
+
+.criteria-item.invalid {
+  color: #ff4444;
+}
+
+.strength-meter {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background-color: #e0e0e0;
+}
+
+.strength-meter.weak {
+  background-color: #ff4444;
+  width: 33.33%;
+}
+
+.strength-meter.medium {
+  background-color: #ffa700;
+  width: 66.66%;
+}
+
+.strength-meter.strong {
+  background-color: #00c851;
+  width: 100%;
+}
+
+.strength-text {
+  color: #666;
+  min-width: 60px;
+}
